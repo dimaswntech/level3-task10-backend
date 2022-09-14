@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Http\Resources\ProductResource;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -14,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return new ProductResource(Product::all());
     }
 
     /**
@@ -35,7 +38,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //set validation.
+        $validator = Validator::make($request->all(), [
+            'nama_produk'=>'required',
+            'keterangan'=>'required',
+            'harga'=>'required',
+            'jumlah'=>'required',
+        ]);
+
+        //response error validation
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        //save to database
+        $product = Product::create([
+            'nama_produk'=> $request->nama_produk,
+            'keterangan'=> $request->keterangan,
+            'harga'=> $request->harga,
+            'jumlah'=> $request->jumlah
+        ]);
+
+        return new ProductResource($product);
     }
 
     /**
@@ -44,9 +68,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return new ProductResource($product);
     }
 
     /**
@@ -67,9 +91,30 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        //set validation
+        $validator = Validator::make($request->all(), [
+            'nama_produk'=>'required',
+            'keterangan'=>'required',
+            'harga'=>'required',
+            'jumlah'=>'required',
+        ]);
+
+        //response error validation
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        //update to database
+        $product->update([
+            'nama_produk'=> $request->nama_produk,
+            'keterangan'=> $request->keterangan,
+            'harga'=> $request->harga,
+            'jumlah'=> $request->jumlah
+        ]);
+
+        return new ProductResource($product);
     }
 
     /**
@@ -78,8 +123,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return new ProductResource($product);
     }
 }
