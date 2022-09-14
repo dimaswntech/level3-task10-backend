@@ -1,3 +1,22 @@
+# level3-task10-backend
+
+![This is an image](https://i.postimg.cc/zBVGnd0B/Pijar-Camp.png)
+
+This is for submit PijarCamp test. Level 3 - tugas 10 in BACKEND SIDE
+
+Link for repository FRONTEND SIDE : [tugas 10 in FRONTEND SIDE](https://github.com/dimaswntech/level3-task10-frontend)
+
+
+
+https://user-images.githubusercontent.com/67653363/190111093-73db109a-8698-4c23-8e90-73e852623623.mp4
+
+
+## Edit view web
+![This is an image](https://i.postimg.cc/QMkhrQPm/Screenshot-from-2022-09-14-15-43-57.png)
+## Input view web
+![This is an image](https://i.postimg.cc/Gh2F8zxB/Screenshot-from-2022-09-14-15-43-50.png)
+## Table view web
+![This is an image](https://i.postimg.cc/C5Np3SQK/Screenshot-from-2022-09-14-15-43-45.png)
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
